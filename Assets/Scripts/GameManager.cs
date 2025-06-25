@@ -9,11 +9,17 @@ public class GameManager : MonoBehaviour
 
     public float restartDelay = 1.5f; // Time before the game restarts
 
-    public GameObject completeLevelUI; // UI to show when the level is completed
+
+
+    public GameObject winPanel;
+    public GameObject losePanel;
+    public GameObject finalScore;
 
     public void CompleteLevel()
     {
-;        completeLevelUI.SetActive(true); 
+        winPanel.SetActive(true);
+        losePanel.SetActive(false);
+        finalScore.SetActive(true);
     }
 
     public void GameOver()
@@ -22,11 +28,13 @@ public class GameManager : MonoBehaviour
         {
             gameHasEnded = true;
             Debug.Log("Game Over");
-            Invoke ("Restart", restartDelay );
+            winPanel.SetActive(false);
+            losePanel.SetActive(true);
+            finalScore.SetActive(true);
         }
     }
 
-    void Restart()
+    public void Restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name); // Reload the current scene
     }
