@@ -38,6 +38,16 @@ public class PlayerMovement : MonoBehaviour {
         }
     }
 
+    public void MoveLeft()
+    {
+        rb.AddForce(-sidewaysForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
+    }
+
+    public void MoveRight()
+    {
+        rb.AddForce(sidewaysForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
+    }
+
     public void StopMovement()
     {
         rb.velocity=Vector3.zero; // Stop all momentum
